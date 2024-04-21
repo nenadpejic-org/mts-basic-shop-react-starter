@@ -23,6 +23,8 @@ Here is a rough wireframe of the projects design
 - [Tailwindcss](https://tailwindcss.com/) - Styling
 - [SVGR](https://www.npmjs.com/package/vite-plugin-svgr) - SVG Loader
 - [React Router](https://reactrouter.com/en/main/) - Routing
+- [JSON server](https://github.com/typicode/json-server) - Server and Database
+- [Concurrently](https://github.com/open-cli-tools/concurrently) - Run multiple commands concurrently
 
 ## Installation
 
@@ -57,6 +59,12 @@ Run local dev server
 
 ```sh
 $ npm run dev
+```
+
+Or run both json and local dev server concurrently
+
+```sh
+$ npm start
 ```
 
 ## Build and Test

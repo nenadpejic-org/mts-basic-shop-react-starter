@@ -7,13 +7,15 @@ const HomePage = () => {
         alt=""
       />
       <div className="container absolute inset-0 flex flex-col justify-end py-6">
-        <h1 className="text-2xl font-bold">Experience the Thrill</h1>
-        <p className="font-medium">
+        <h1 className="text-2xl font-bold text-gray-900">
+          Experience the Thrill
+        </h1>
+        <p className="font-medium text-gray-900">
           Elevate Your Snowboarding Adventure with Us!
         </p>
         <div>
           <a
-            className="mt-5 inline-block bg-white px-6 py-2 font-medium"
+            className="mt-5 inline-block bg-white px-6 py-2 font-medium text-gray-900"
             href="/shop"
           >
             Shop
