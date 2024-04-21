@@ -22,6 +22,7 @@ Here is a rough wireframe of the projects design
 - [Lint Staged](https://github.com/okonet/lint-staged/) - Run linters and formatters against staged git files
 - [Tailwindcss](https://tailwindcss.com/) - Styling
 - [SVGR](https://www.npmjs.com/package/vite-plugin-svgr) - SVG Loader
+- [React Router](https://reactrouter.com/en/main/) - Routing
 
 ## Installation
 
