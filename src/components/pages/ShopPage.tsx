@@ -1,47 +1,29 @@
-import { Product, getProducts } from '@/services/products'
-import { useEffect, useState } from 'react'
-
-type GetProductsQuery = {
-  isLoading: boolean
-  error: string
-  data: null | Product[]
-}
-
-const defaultGetProductsQuery: GetProductsQuery = {
-  isLoading: false,
-  error: '',
-  data: null,
-}
+import { defaultQueryReducerState, queryReducer } from '@/reducers/queryReducer'
+import { getProducts } from '@/services/products'
+import { useEffect, useReducer } from 'react'
 
 const ShopPage = () => {
-  const [getProductsQuery, setGetProductsQuery] = useState<GetProductsQuery>(
-    defaultGetProductsQuery,
-  )
+  const [state, dispatch] = useReducer(queryReducer, defaultQueryReducerState)
 
   useEffect(() => {
     const fetch = async () => {
       try {
-        setGetProductsQuery({ isLoading: true, error: '', data: null })
-        const products = await getProducts({ query: { availability: true } })
-        setGetProductsQuery((pV) => ({
-          ...pV,
-          isLoading: false,
-          data: products,
-        }))
+        dispatch({ type: 'init' })
+        const data = await getProducts({ query: { availability: true } })
+        dispatch({ type: 'success', payload: data })
       } catch (error) {
         const { message } = error as Error
-        setGetProductsQuery((pV) => ({
-          ...pV,
-          isLoading: false,
-          error: message,
-        }))
+        dispatch({
+          type: 'error',
+          payload: message,
+        })
       }
     }
 
     fetch()
   }, [])
 
-  console.log(getProductsQuery)
+  console.log(state)
 
   return <></>
 }
