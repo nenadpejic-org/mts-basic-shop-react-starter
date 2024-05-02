@@ -1,60 +1,43 @@
 import { Product } from '@/services/products'
 
-type QueryReducerState = {
-  getProductsQuery: {
-    isLoading: boolean
-    error: string
-    data: null | Product[]
-  }
+export type QueryReducerState = {
+  isLoading: boolean
+  error: string
+  data: null | Product[]
 }
 
-const defaultQueryReducerState: QueryReducerState = {
-  getProductsQuery: {
-    isLoading: false,
-    error: '',
-    data: null,
-  },
+export const defaultQueryReducerState: QueryReducerState = {
+  isLoading: false,
+  error: '',
+  data: null,
 }
 
 type Action =
-  | { type: 'getProductsQuery.init' }
-  | { type: 'getProductsQuery.error'; payload: string }
-  | { type: 'getProductsQuery.success'; payload: Product[] }
+  | { type: 'init' }
+  | { type: 'error'; payload: string }
+  | { type: 'success'; payload: Product[] }
 
-const queryReducer = (
+export const queryReducer = (
   state: QueryReducerState,
   action: Action,
 ): QueryReducerState => {
   switch (action.type) {
-    case 'getProductsQuery.init':
+    case 'init':
       return {
         ...state,
-        getProductsQuery: {
-          ...state.getProductsQuery,
-          isLoading: true,
-          error: '',
-          data: null,
-        },
+        isLoading: true,
       }
-    case 'getProductsQuery.error':
+    case 'error':
       return {
-        ...state,
-        getProductsQuery: {
-          ...state.getProductsQuery,
-          isLoading: false,
-          error: action.payload,
-        },
+        isLoading: false,
+        error: action.payload,
+        data: null,
       }
-    case 'getProductsQuery.success':
+    case 'success':
       return {
-        ...state,
-        getProductsQuery: {
-          ...state.getProductsQuery,
-          isLoading: false,
-          data: action.payload,
-        },
+        isLoading: false,
+        error: '',
+        data: action.payload,
       }
   }
 }
-
-export { defaultQueryReducerState, queryReducer, type QueryReducerState }
