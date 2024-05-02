@@ -1,29 +1,15 @@
-import { defaultQueryReducerState, queryReducer } from '@/reducers/queryReducer'
-import { getProducts } from '@/services/products'
-import { useEffect, useReducer } from 'react'
+import { useQuery } from '@/hooks/useQuery'
+import { useEffect } from 'react'
 
 const ShopPage = () => {
-  const [state, dispatch] = useReducer(queryReducer, defaultQueryReducerState)
+  const { getProductsQuery } = useQuery()
 
   useEffect(() => {
-    const fetch = async () => {
-      try {
-        dispatch({ type: 'getProductsQuery.init' })
-        const data = await getProducts({ query: { availability: true } })
-        dispatch({ type: 'getProductsQuery.success', payload: data })
-      } catch (error) {
-        const { message } = error as Error
-        dispatch({
-          type: 'getProductsQuery.error',
-          payload: message,
-        })
-      }
-    }
-
-    fetch()
+    getProductsQuery.fetch()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log(state)
+  console.log(getProductsQuery)
 
   return <></>
 }
