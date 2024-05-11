@@ -8,7 +8,10 @@ type Props = {
 
 const StyledLink = ({ to, children }: Props) => {
   return (
-    <NavLink className="inline-block font-medium hover:underline" to={to}>
+    <NavLink
+      className="inline-block font-medium text-gray-900 hover:underline"
+      to={to}
+    >
       {children}
     </NavLink>
   )
