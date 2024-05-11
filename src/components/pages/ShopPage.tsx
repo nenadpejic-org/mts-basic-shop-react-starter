@@ -1,11 +1,11 @@
-import { QueryContext } from '@/contexts/QueryContext'
-import { useContext, useEffect } from 'react'
+import { useQuery } from '@/hooks/useQuery'
+import { useEffect } from 'react'
 
 const ShopPage = () => {
-  const query = useContext(QueryContext)
+  const query = useQuery()
 
   useEffect(() => {
-    query.fetch()
+    query.fetch({ options: { query: { availability: true } } })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
