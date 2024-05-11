@@ -1,8 +1,8 @@
-import { QueryContext } from '@/contexts/QueryContext'
-import { useContext, useEffect } from 'react'
+import { useQuery } from '@/hooks/useQuery'
+import { useEffect } from 'react'
 
 const ShopPage = () => {
-  const query = useContext(QueryContext)
+  const query = useQuery()
 
   useEffect(() => {
     query.fetch()
