@@ -1,26 +1,28 @@
+import Button from '../ui/Button'
+import Heading from '../ui/Heading'
+import Paragraph from '../ui/Paragraph'
+
 const HomePage = () => {
   return (
     <section className="relative h-[calc(100svh-72px)]">
       <img
-        className="aspect-[16/9] h-full w-full object-cover object-center"
+        className="aspect-[16/9] h-full w-full bg-gray-200 object-cover object-center"
         src="https://source.unsplash.com/man-in-black-jacket-and-brown-pants-lying-on-snow-covered-ground-during-daytime-q80sx583gzE"
         alt=""
       />
       <div className="container absolute inset-0 flex flex-col justify-end py-6">
-        <h1 className="text-2xl font-bold text-gray-900">
-          Experience the Thrill
-        </h1>
-        <p className="font-medium text-gray-900">
+        <Heading>Experience the Thrill</Heading>
+        <Paragraph variant="lg-b">
           Elevate Your Snowboarding Adventure with Us!
-        </p>
-        <div>
-          <a
-            className="mt-5 inline-block bg-white px-6 py-2 font-medium text-gray-900"
-            href="/shop"
-          >
-            Shop
-          </a>
-        </div>
+        </Paragraph>
+        <Button
+          className="mt-5 self-start"
+          as="a"
+          href="/shop"
+          variant="secondary"
+        >
+          Shop
+        </Button>
       </div>
     </section>
   )

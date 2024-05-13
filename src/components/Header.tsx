@@ -1,5 +1,5 @@
-import ShoppingCart from '@/assets/shopping_cart.svg?react'
 import { NavLink } from 'react-router-dom'
+import Icon from './ui/Icon'
 import StyledLink from './ui/StyledLink'
 
 export type HeaderType = 'root' | 'console'
@@ -24,7 +24,7 @@ const Header = ({ type = 'root' }: Props) => {
           </li>
         </ul>
 
-        {type === 'root' && <ShoppingCart className="ml-auto" />}
+        {type === 'root' && <Icon className="ml-auto" icon="shopingCart" />}
       </nav>
     </header>
   )
