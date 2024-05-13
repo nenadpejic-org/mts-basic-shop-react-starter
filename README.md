@@ -21,6 +21,7 @@ Here is a rough wireframe of the projects design
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) - Specification for commit messages
 - [Lint Staged](https://github.com/okonet/lint-staged/) - Run linters and formatters against staged git files
 - [Tailwindcss](https://tailwindcss.com/) - Styling
+- [Tailwind Merge](https://github.com/dcastil/tailwind-merge) - Utility for Tailwindcss
 - [SVGR](https://www.npmjs.com/package/vite-plugin-svgr) - SVG Loader
 - [React Router](https://reactrouter.com/en/main/) - Routing
 - [JSON server](https://github.com/typicode/json-server) - Server and Database
