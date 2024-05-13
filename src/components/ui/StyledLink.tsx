@@ -1,10 +1,6 @@
-import { ReactNode } from 'react'
-import { NavLink, To } from 'react-router-dom'
+import { LinkProps, NavLink } from 'react-router-dom'
 
-type Props = {
-  to: To
-  children?: ReactNode
-}
+type Props = LinkProps
 
 const StyledLink = ({ to, children }: Props) => {
   return (

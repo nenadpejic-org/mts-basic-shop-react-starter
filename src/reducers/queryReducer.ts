@@ -1,12 +1,12 @@
 import { Product } from '@/services/products'
 
-type QueryReducerState = {
+export type QueryReducerState = {
   isLoading: boolean
   error: string
   data: null | Product[]
 }
 
-const defaultQueryReducerState: QueryReducerState = {
+export const defaultQueryReducerState: QueryReducerState = {
   isLoading: false,
   error: '',
   data: null,
@@ -17,7 +17,7 @@ type Action =
   | { type: 'error'; payload: string }
   | { type: 'success'; payload: Product[] }
 
-const queryReducer = (
+export const queryReducer = (
   state: QueryReducerState,
   action: Action,
 ): QueryReducerState => {
@@ -26,22 +26,20 @@ const queryReducer = (
       return {
         ...state,
         isLoading: true,
-        error: '',
-        data: null,
       }
     case 'error':
       return {
         ...state,
         isLoading: false,
         error: action.payload,
+        data: null,
       }
     case 'success':
       return {
         ...state,
         isLoading: false,
+        error: '',
         data: action.payload,
       }
   }
 }
-
-export { defaultQueryReducerState, queryReducer, type QueryReducerState }

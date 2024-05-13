@@ -14,13 +14,13 @@ type QueryState = QueryReducerState & {
   }) => Promise<void>
 }
 
-const QueryContext = createContext<QueryState>({} as QueryState)
+export const QueryContext = createContext<QueryState>({} as QueryState)
 
 type Props = {
   children?: ReactNode
 }
 
-const QueryContextProvider = ({ children }: Props) => {
+export const QueryContextProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(queryReducer, defaultQueryReducerState)
 
   const queryState: QueryState = {
@@ -47,5 +47,3 @@ const QueryContextProvider = ({ children }: Props) => {
     <QueryContext.Provider value={queryState}>{children}</QueryContext.Provider>
   )
 }
-
-export { QueryContext, QueryContextProvider }

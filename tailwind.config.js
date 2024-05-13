@@ -11,7 +11,7 @@ export default {
       },
     },
     screens: {
-      md: defaultTheme.screens.md,
+      lg: defaultTheme.screens.lg,
     },
     extend: {},
   },

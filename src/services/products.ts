@@ -1,4 +1,4 @@
-import { jsonApi } from './jsonApi'
+import { Query, jsonApi } from './jsonApi'
 
 const PATH = '/products'
 
@@ -34,10 +34,8 @@ export type Product = {
   stockQuantity: number
 }
 
-type ProductsQuery = Partial<Product>
-
 type GetAllProductsOptions = {
-  query?: ProductsQuery
+  query?: Query & Partial<Product>
 }
 
 export const getProducts = (options?: GetAllProductsOptions) => {
