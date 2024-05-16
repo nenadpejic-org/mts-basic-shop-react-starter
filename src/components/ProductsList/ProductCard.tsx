@@ -1,11 +1,13 @@
 import Button from '@/components/ui/Button'
 import Paragraph from '@/components/ui/Paragraph'
+import { useCart } from '@/hooks/useCart'
 import { Product } from '@/services/products'
 
 type Props = { product: Product }
 
 const ProductCard = ({ product }: Props) => {
   const { image, name, price, stockQuantity } = product
+  const { handleAddItemToCart } = useCart()
 
   return (
     <li>
@@ -25,12 +27,7 @@ const ProductCard = ({ product }: Props) => {
         />
       </div>
 
-      <Button
-        className="w-full"
-        onClick={() => {
-          // TODO: handleAddItemToCart
-        }}
-      >
+      <Button className="w-full" onClick={() => handleAddItemToCart(product)}>
         Add to Cart
       </Button>
 
