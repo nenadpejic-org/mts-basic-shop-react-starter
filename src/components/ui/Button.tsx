@@ -1,26 +1,39 @@
 import { ComponentPropsWithoutRef, ElementType, PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
+import Icon, { IconName } from './Icon'
 
 const buttonVariants = {
   primary: 'bg-gray-800 text-gray-100',
   secondary: 'bg-white text-gray-900',
+  icon: 'p-0 opacity-70 hover:opacity-100',
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ButtonElementType = ElementType<any, 'button' | 'a'>
 
-type Props<T extends ButtonElementType> = PropsWithChildren<
+type PolymorphicProps<T extends ButtonElementType> = PropsWithChildren<
   ComponentPropsWithoutRef<T> & {
     as?: T
-    variant?: keyof typeof buttonVariants
   }
 >
+
+type Props<T extends ButtonElementType> = PolymorphicProps<T> &
+  (
+    | {
+        variant?: Exclude<keyof typeof buttonVariants, 'icon'>
+      }
+    | {
+        variant?: 'icon'
+        icon: IconName
+      }
+  )
 
 const Button = <T extends ButtonElementType = 'button'>({
   as,
   children,
   className,
   variant = 'primary',
+  icon,
   ...rest
 }: Props<T>) => {
   const Element = as || 'button'
@@ -35,7 +48,7 @@ const Button = <T extends ButtonElementType = 'button'>({
       {...(Element === 'button' && { type: 'button' })}
       {...rest}
     >
-      {children}
+      {icon ? <Icon icon={icon} /> : children}
     </Element>
   )
 }
