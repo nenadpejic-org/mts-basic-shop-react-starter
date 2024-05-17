@@ -1,4 +1,5 @@
 import { Product } from '@/services/products'
+import { ls } from '@/utils/localStorage'
 import { ReactNode, createContext, useEffect, useState } from 'react'
 
 export type CartItem = Product & {
@@ -28,7 +29,9 @@ type Props = {
 }
 
 export const CartContextProvider = ({ children }: Props) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [cartItems, setCartItems] = useState<CartItem[]>(
+    ls.get('cart-items') || [],
+  )
   const [cartCount, setCartCount] = useState(0)
   const [cartTotal, setCartTotal] = useState(0)
 
@@ -42,6 +45,7 @@ export const CartContextProvider = ({ children }: Props) => {
         0,
       ),
     )
+    ls.set('cart-items', cartItems)
   }, [cartItems])
 
   const handleAddItemToCart = (productToAdd: Product) => {
