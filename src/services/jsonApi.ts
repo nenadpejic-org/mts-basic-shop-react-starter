@@ -1,6 +1,8 @@
 const BASE_URL = 'http://localhost:3000'
 
-type Query = Record<string, string | boolean | number | object>
+export type Query = {
+  name_like: string
+}
 
 const getQueryParams = (query?: Query) => {
   if (!query) return ''

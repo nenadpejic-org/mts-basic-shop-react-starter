@@ -3,24 +3,33 @@ import {
   defaultQueryReducerState,
   queryReducer,
 } from '@/reducers/queryReducer'
-import { Product, getProducts } from '@/services/products'
+import {
+  GetAllProductsOptions,
+  Product,
+  getProducts,
+} from '@/services/products'
 import { ReactNode, createContext, useReducer } from 'react'
 
 type QueryState = QueryReducerState & {
   fetch: (props?: {
-    options?: Parameters<typeof getProducts>[0]
+    options?: {
+      query: Pick<
+        Required<GetAllProductsOptions>['query'],
+        'availability' | 'name_like'
+      >
+    }
     onSuccess?: (data: Product[]) => void
     onError?: (error: string) => void
   }) => Promise<void>
 }
 
-const QueryContext = createContext<QueryState>({} as QueryState)
+export const QueryContext = createContext<QueryState>({} as QueryState)
 
 type Props = {
   children?: ReactNode
 }
 
-const QueryContextProvider = ({ children }: Props) => {
+export const QueryContextProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(queryReducer, defaultQueryReducerState)
 
   const queryState: QueryState = {
@@ -30,7 +39,10 @@ const QueryContextProvider = ({ children }: Props) => {
       try {
         dispatch({ type: 'init' })
         const data = await getProducts(options)
-        dispatch({ type: 'success', payload: data })
+        dispatch({
+          type: 'success',
+          payload: data,
+        })
         onSuccess?.(data)
       } catch (error) {
         const { message } = error as Error
@@ -47,5 +59,3 @@ const QueryContextProvider = ({ children }: Props) => {
     <QueryContext.Provider value={queryState}>{children}</QueryContext.Provider>
   )
 }
-
-export { QueryContext, QueryContextProvider }

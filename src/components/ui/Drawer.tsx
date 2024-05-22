@@ -74,8 +74,8 @@ const Drawer = ({
               )}
             >
               {/* Header */}
-              <div className="flex items-center justify-between gap-2 p-4 text-center md:text-start">
-                <Icon className="md:hidden" icon="placeholder" />
+              <div className="flex items-center justify-between gap-2 p-4 text-center lg:text-start">
+                <Icon className="lg:hidden" icon="placeholder" />
                 {header}
                 <Button
                   className="self-start"
