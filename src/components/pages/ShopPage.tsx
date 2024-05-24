@@ -32,7 +32,7 @@ const ShopPage = () => {
             className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2"
           />
           <input
-            className="w-full border border-gray-400 bg-gray-50 px-4 py-2 pl-10 text-gray-900 placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50 md:w-auto"
+            className="w-full border border-gray-400 bg-gray-50 px-4 py-2 pl-10 text-gray-900 placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50 lg:w-auto"
             type="text"
             placeholder="Search products"
             onChange={handleSearch}

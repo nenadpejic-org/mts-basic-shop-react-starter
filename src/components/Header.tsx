@@ -11,7 +11,7 @@ type Props = {
 const Header = ({ type = 'root' }: Props) => {
   return (
     <header className="fixed inset-x-0 top-0 z-10 bg-white">
-      <nav className="container flex items-center py-6">
+      <nav className="container flex h-[80px] items-center py-6">
         <NavLink className="font-extrabold" to="/">
           Basic Shop
         </NavLink>
