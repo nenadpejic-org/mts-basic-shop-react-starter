@@ -1,6 +1,11 @@
 import add from '@/assets/add.svg?react'
+import checkBox from '@/assets/check_box.svg?react'
+import checkBoxOutlineBlank from '@/assets/check_box_outline_blank.svg?react'
 import close from '@/assets/close.svg?react'
 import deleteIcon from '@/assets/delete.svg?react'
+import keyboardArrowDown from '@/assets/keyboard_arrow_down.svg?react'
+import keyboardArrowUp from '@/assets/keyboard_arrow_up.svg?react'
+import moreVert from '@/assets/more_vert.svg?react'
 import remove from '@/assets/remove.svg?react'
 import search from '@/assets/search.svg?react'
 import shopingCart from '@/assets/shopping_cart.svg?react'
@@ -13,8 +18,13 @@ const placeholder = ({ className, ...props }: { className?: string }) => (
 
 const iconMap = {
   add,
+  checkBox,
+  checkBoxOutlineBlank,
   close,
   delete: deleteIcon,
+  keyboardArrowDown,
+  keyboardArrowUp,
+  moreVert,
   placeholder,
   remove,
   search,
