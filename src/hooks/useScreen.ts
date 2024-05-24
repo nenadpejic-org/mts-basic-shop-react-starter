@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import defaultTheme from 'tailwindcss/defaultTheme'
 
-const DESKTOP_BREAKPOINT = Number.parseInt(defaultTheme.screens.md)
+const DESKTOP_BREAKPOINT = Number.parseInt(defaultTheme.screens.lg)
 
 const useScreen = () => {
   const [isMobile, setIsMobile] = useState(false)

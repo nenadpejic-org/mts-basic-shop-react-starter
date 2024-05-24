@@ -5,11 +5,11 @@ import Heading from '../ui/Heading'
 import Icon from '../ui/Icon'
 
 const ShopPage = () => {
-  const query = useQuery()
+  const { getShopProducts } = useQuery()
   const [searchedProduct, setSearchedProduct] = useState('')
 
   useEffect(() => {
-    query.fetch({
+    getShopProducts.fetch({
       options: {
         query: { availability: true, name_like: searchedProduct },
       },
@@ -32,7 +32,7 @@ const ShopPage = () => {
             className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2"
           />
           <input
-            className="w-full border border-gray-400 bg-gray-50 px-4 py-2 pl-10 text-gray-900 placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50 md:w-auto"
+            className="w-full border border-gray-400 bg-gray-50 px-4 py-2 pl-10 text-gray-900 placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50 lg:w-auto"
             type="text"
             placeholder="Search products"
             onChange={handleSearch}
@@ -41,9 +41,9 @@ const ShopPage = () => {
 
         <ProductsList
           className="mt-8"
-          products={query.data}
-          error={query.error}
-          isLoading={query.isLoading}
+          products={getShopProducts.data}
+          error={getShopProducts.error}
+          isLoading={getShopProducts.isLoading}
         />
       </div>
     </section>

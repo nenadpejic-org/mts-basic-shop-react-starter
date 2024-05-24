@@ -29,7 +29,7 @@ const Cart = ({ className }: Props) => {
           )}
         </div>
       }
-      contentClassName="min-h-[250px] md:min-w-[320px]"
+      contentClassName="min-h-[250px] lg:min-w-[386px]"
       header={<Heading as="h2">Shopping Cart</Heading>}
       footer={
         !!cartTotal && (

@@ -1,43 +1,95 @@
 import { Product } from '@/services/products'
 
 export type QueryReducerState = {
-  isLoading: boolean
-  error: string
-  data: null | Product[]
+  getShopProducts: {
+    isLoading: boolean
+    error: string
+    data: null | Product[]
+  }
+  getConsoleProducts: {
+    isLoading: boolean
+    error: string
+    data: null | Product[]
+  }
 }
 
 export const defaultQueryReducerState: QueryReducerState = {
-  isLoading: false,
-  error: '',
-  data: null,
+  getShopProducts: {
+    isLoading: false,
+    error: '',
+    data: null,
+  },
+  getConsoleProducts: {
+    isLoading: false,
+    error: '',
+    data: null,
+  },
 }
 
 type Action =
-  | { type: 'init' }
-  | { type: 'error'; payload: string }
-  | { type: 'success'; payload: Product[] }
+  | { type: 'getShopProducts.init' }
+  | { type: 'getShopProducts.error'; payload: string }
+  | { type: 'getShopProducts.success'; payload: Product[] }
+  | { type: 'getConsoleProducts.init' }
+  | { type: 'getConsoleProducts.error'; payload: string }
+  | { type: 'getConsoleProducts.success'; payload: Product[] }
 
 export const queryReducer = (
   state: QueryReducerState,
   action: Action,
 ): QueryReducerState => {
   switch (action.type) {
-    case 'init':
+    case 'getShopProducts.init':
       return {
         ...state,
-        isLoading: true,
+        getShopProducts: {
+          ...state.getShopProducts,
+          isLoading: true,
+        },
       }
-    case 'error':
+    case 'getShopProducts.error':
       return {
-        isLoading: false,
-        error: action.payload,
-        data: null,
+        ...state,
+        getShopProducts: {
+          isLoading: false,
+          error: action.payload,
+          data: null,
+        },
       }
-    case 'success':
+    case 'getShopProducts.success':
       return {
-        isLoading: false,
-        error: '',
-        data: action.payload,
+        ...state,
+        getShopProducts: {
+          isLoading: false,
+          error: '',
+          data: action.payload,
+        },
+      }
+    case 'getConsoleProducts.init':
+      return {
+        ...state,
+        getConsoleProducts: {
+          ...state.getConsoleProducts,
+          isLoading: true,
+        },
+      }
+    case 'getConsoleProducts.error':
+      return {
+        ...state,
+        getConsoleProducts: {
+          isLoading: false,
+          error: action.payload,
+          data: null,
+        },
+      }
+    case 'getConsoleProducts.success':
+      return {
+        ...state,
+        getConsoleProducts: {
+          isLoading: false,
+          error: '',
+          data: action.payload,
+        },
       }
   }
 }

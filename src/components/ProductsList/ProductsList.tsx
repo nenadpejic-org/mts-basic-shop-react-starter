@@ -13,12 +13,12 @@ const ProductsList = ({ products, isLoading, error, className }: Props) => {
   return (
     <ul
       className={twMerge(
-        'grid grid-cols-2 gap-x-4 gap-y-6 md:grid-cols-4',
+        'grid grid-cols-2 gap-x-4 gap-y-6 lg:grid-cols-4',
         className,
       )}
     >
       {!products?.length && (
-        <li className="col-span-2 text-center md:col-span-4">
+        <li className="col-span-2 text-center lg:col-span-4">
           {isLoading && <p className="text-gray-500">Loading...</p>}
           {error && <p className="text-red-500">{error}</p>}
           {products?.length === 0 && <p>No products found</p>}
