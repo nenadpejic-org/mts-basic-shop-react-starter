@@ -1,12 +1,13 @@
 import { useQuery } from '@/hooks/useQuery'
 import useScreen from '@/hooks/useScreen'
 import { Product } from '@/services/products'
-import { useEffect } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
+import Button from '../ui/Button'
 import Checkbox from '../ui/Checkbox'
 import DropdownMenu from '../ui/DropdownMenu'
 import Heading from '../ui/Heading'
 import Table, { TableConfig } from '../ui/Table'
-import Button from '../ui/Button'
+import TextInput from '../ui/TextInput'
 
 const tableConfigDesktop: TableConfig<Product> = [
   { label: 'Product Name', field: 'name' },
@@ -55,25 +56,39 @@ const tableConfigMobile = [...tableConfigDesktop]
 tableConfigMobile.splice(1, 4)
 
 const ConsolePage = () => {
-  const query = useQuery()
+  const { getConsoleProducts } = useQuery()
   const { isMobile } = useScreen()
+  const [searchedProduct, setSearchedProduct] = useState('')
 
   useEffect(() => {
-    query.fetch()
+    getConsoleProducts.fetch({
+      options: { query: { name_like: searchedProduct } },
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [searchedProduct])
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchedProduct(e.target.value)
+  }
 
   return (
     <section className="py-8">
       <div className="container">
         <Heading>Your products</Heading>
 
+        <TextInput
+          className="mt-8"
+          placeholder="Search products"
+          iconBefore="search"
+          onChange={handleSearch}
+        />
+
         <Table
           className="mt-8 w-full"
           tableConfig={isMobile ? tableConfigMobile : tableConfigDesktop}
-          data={query.data}
-          error={query.error}
-          isLoading={query.isLoading}
+          data={getConsoleProducts.data}
+          error={getConsoleProducts.error}
+          isLoading={getConsoleProducts.isLoading}
         />
       </div>
     </section>
