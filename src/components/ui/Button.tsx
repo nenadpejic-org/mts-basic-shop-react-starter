@@ -4,7 +4,8 @@ import Icon, { IconName } from './Icon'
 
 const buttonVariants = {
   primary: 'bg-gray-800 text-gray-100',
-  secondary: 'bg-white text-gray-900',
+  secondary: 'bg-gray-100 text-gray-900',
+  ghost: 'bg-transparent text-gray-900 hover:bg-gray-100',
   icon: 'p-0 opacity-70 hover:opacity-100',
 }
 

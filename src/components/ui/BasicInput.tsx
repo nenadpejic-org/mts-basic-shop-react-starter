@@ -15,8 +15,8 @@ const BasicInput = forwardRef(
     ref: ForwardedRef<HTMLInputElement>,
   ) => {
     return (
-      <div className="inline-block">
-        <div className="relative inline-block">
+      <div className="inline-block w-full">
+        <div className="relative inline-block w-full">
           {iconBefore && (
             <Icon
               className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2"
@@ -26,7 +26,7 @@ const BasicInput = forwardRef(
           <input
             id={id}
             className={twMerge(
-              'border border-gray-400 bg-gray-50 px-4 py-2 text-gray-900 placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50',
+              'w-full border border-gray-400 bg-gray-50 px-4 py-2 text-gray-900 placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50',
               iconAfter && 'pr-10',
               iconBefore && 'pl-10',
               error && 'border-red-500',
