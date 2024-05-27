@@ -11,7 +11,7 @@ const Layout = ({ headerType }: Props) => {
     <div className="flex min-h-screen flex-col">
       <Header type={headerType} />
 
-      <main className="mt-[72px] grow">
+      <main className="mt-[80px] grow">
         <Outlet />
       </main>
 

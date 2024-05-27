@@ -4,6 +4,7 @@ import { Product } from '@/services/products'
 import { ChangeEvent, useEffect, useState } from 'react'
 import Button from '../ui/Button'
 import Checkbox from '../ui/Checkbox'
+import Dialog from '../ui/Dialog'
 import DropdownMenu from '../ui/DropdownMenu'
 import Heading from '../ui/Heading'
 import Table, { TableConfig } from '../ui/Table'
@@ -76,12 +77,21 @@ const ConsolePage = () => {
       <div className="container">
         <Heading>Your products</Heading>
 
-        <TextInput
-          className="mt-8"
-          placeholder="Search products"
-          iconBefore="search"
-          onChange={handleSearch}
-        />
+        <div className="mt-8 flex items-center gap-2">
+          <TextInput
+            className="w-full lg:w-auto"
+            placeholder="Search products"
+            iconBefore="search"
+            onChange={handleSearch}
+          />
+
+          <Dialog
+            trigger={<Button>Add</Button>}
+            header={<Heading as="h2">Add Product</Heading>}
+          >
+            {/* // TODO: Add content */}
+          </Dialog>
+        </div>
 
         <Table
           className="mt-8 w-full"
