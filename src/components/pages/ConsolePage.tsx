@@ -9,6 +9,7 @@ import DropdownMenu from '../ui/DropdownMenu'
 import Heading from '../ui/Heading'
 import Table, { TableConfig } from '../ui/Table'
 import TextInput from '../ui/TextInput'
+import AddProductForm from '../forms/AddProductForm'
 
 const tableConfigDesktop: TableConfig<Product> = [
   { label: 'Product Name', field: 'name' },
@@ -89,7 +90,7 @@ const ConsolePage = () => {
             trigger={<Button>Add</Button>}
             header={<Heading as="h2">Add Product</Heading>}
           >
-            {/* // TODO: Add content */}
+            <AddProductForm />
           </Dialog>
         </div>
 

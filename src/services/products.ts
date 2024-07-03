@@ -4,6 +4,14 @@ const PATH = '/products'
 
 type ProductCategory = 'Bindings' | 'Boots' | 'Jackets' | 'Pants' | 'Snowboard'
 
+export const productCategories: ProductCategory[] = [
+  'Bindings',
+  'Boots',
+  'Jackets',
+  'Pants',
+  'Snowboard',
+]
+
 type ProductColor =
   | 'Black'
   | 'Blue'
@@ -14,19 +22,22 @@ type ProductColor =
   | 'White'
   | 'Yellow'
 
-type ProductFeature =
-  | 'Advanced Camber Profile'
-  | 'Customizable Binding Adjustments'
-  | 'Integrated Impact Protection'
-  | 'Quick-Lace System for Boots'
-  | 'Smartphone Connectivity for Wearables'
+export const productColors: ProductColor[] = [
+  'Black',
+  'Blue',
+  'Burgundy',
+  'Green',
+  'Sand',
+  'Violet',
+  'White',
+  'Yellow',
+]
 
 export type Product = {
   availability: boolean
   category: ProductCategory
   color: ProductColor
   description: string
-  features: ProductFeature[]
   id: string
   image: string
   name: string

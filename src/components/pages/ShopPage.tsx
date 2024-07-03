@@ -27,7 +27,7 @@ const ShopPage = () => {
         <Heading>Explore our Shop: Elevate Your Ride</Heading>
 
         <TextInput
-          className="mt-8"
+          className="mt-8 w-full lg:w-auto"
           placeholder="Search products"
           iconBefore="search"
           onChange={handleSearch}

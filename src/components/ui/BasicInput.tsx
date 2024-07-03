@@ -15,8 +15,8 @@ const BasicInput = forwardRef(
     ref: ForwardedRef<HTMLInputElement>,
   ) => {
     return (
-      <div className="inline-block w-full">
-        <div className="relative inline-block w-full">
+      <div>
+        <div className="relative">
           {iconBefore && (
             <Icon
               className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2"
