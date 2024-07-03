@@ -1,25 +1,24 @@
 import { ComponentProps, ForwardedRef, forwardRef, useId } from 'react'
-import { twMerge } from 'tailwind-merge'
 import BasicInput from './BasicInput'
 import BasicLabel from './BasicLabel'
 import { IconName } from './Icon'
 
-type TextInputProps = ComponentProps<'input'> & {
+type NumberInputProps = ComponentProps<'input'> & {
   error?: string
   iconBefore?: IconName
   inputClassName?: string
   label?: string
 }
 
-const TextInput = forwardRef(
+const NumberInput = forwardRef(
   (
-    { className, inputClassName, label, required, ...rest }: TextInputProps,
+    { className, inputClassName, label, required, ...rest }: NumberInputProps,
     ref: ForwardedRef<HTMLInputElement>,
   ) => {
     const id = useId()
 
     return (
-      <div className={twMerge('inline-block', className)}>
+      <div className={className}>
         {label && (
           <BasicLabel htmlFor={id} required={required}>
             {label}
@@ -30,11 +29,13 @@ const TextInput = forwardRef(
           id={label && id}
           className={inputClassName}
           ref={ref}
-          type="text"
+          type="number"
+          step={1}
           {...rest}
         />
       </div>
     )
   },
 )
-export default TextInput
+
+export default NumberInput
