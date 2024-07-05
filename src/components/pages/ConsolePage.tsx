@@ -1,7 +1,8 @@
-import { useQuery } from '@/hooks/useQuery'
+import { useQueryContext } from '@/hooks/useQueryContext'
 import useScreen from '@/hooks/useScreen'
 import { Product } from '@/services/products'
 import { ChangeEvent, useEffect, useState } from 'react'
+import AddProductForm from '../forms/AddProductForm'
 import Button from '../ui/Button'
 import Checkbox from '../ui/Checkbox'
 import Dialog from '../ui/Dialog'
@@ -9,7 +10,6 @@ import DropdownMenu from '../ui/DropdownMenu'
 import Heading from '../ui/Heading'
 import Table, { TableConfig } from '../ui/Table'
 import TextInput from '../ui/TextInput'
-import AddProductForm from '../forms/AddProductForm'
 
 const tableConfigDesktop: TableConfig<Product> = [
   { label: 'Product Name', field: 'name' },
@@ -58,13 +58,13 @@ const tableConfigMobile = [...tableConfigDesktop]
 tableConfigMobile.splice(1, 4)
 
 const ConsolePage = () => {
-  const { getConsoleProducts } = useQuery()
+  const { getConsoleProductsQuery } = useQueryContext()
   const { isMobile } = useScreen()
   const [searchedProduct, setSearchedProduct] = useState('')
 
   useEffect(() => {
-    getConsoleProducts.fetch({
-      options: { query: { name_like: searchedProduct } },
+    getConsoleProductsQuery.fetch({
+      query: { name_like: searchedProduct },
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchedProduct])
@@ -97,9 +97,9 @@ const ConsolePage = () => {
         <Table
           className="mt-8 w-full"
           tableConfig={isMobile ? tableConfigMobile : tableConfigDesktop}
-          data={getConsoleProducts.data}
-          error={getConsoleProducts.error}
-          isLoading={getConsoleProducts.isLoading}
+          data={getConsoleProductsQuery.data}
+          error={getConsoleProductsQuery.error}
+          isLoading={getConsoleProductsQuery.isLoading}
         />
       </div>
     </section>
