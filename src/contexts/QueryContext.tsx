@@ -1,97 +1,42 @@
+import useQuery, { QueryResult } from '@/hooks/useQuery'
 import {
-  QueryReducerState,
-  defaultQueryReducerState,
-  queryReducer,
-} from '@/reducers/queryReducer'
-import {
-  GetAllProductsOptions,
+  AddProductOptions,
+  GetProductsOptions,
   Product,
+  addProduct,
   getProducts,
 } from '@/services/products'
-import { ReactNode, createContext, useReducer } from 'react'
+import { ReactNode, createContext } from 'react'
 
-type QueryState = QueryReducerState & {
-  getShopProducts: {
-    fetch: (props?: {
-      options?: {
-        query: Pick<
-          Required<GetAllProductsOptions>['query'],
-          'availability' | 'name_like'
-        >
-      }
-      onSuccess?: (data: Product[]) => void
-      onError?: (error: string) => void
-    }) => Promise<void>
-  }
-  getConsoleProducts: {
-    fetch: (props?: {
-      options?: {
-        query: Pick<Required<GetAllProductsOptions>['query'], 'name_like'>
-      }
-      onSuccess?: (data: Product[]) => void
-      onError?: (error: string) => void
-    }) => Promise<void>
-  }
+type QueryContextValue = {
+  getShopProductsQuery: QueryResult<GetProductsOptions | undefined, Product[]>
+  getConsoleProductsQuery: QueryResult<
+    GetProductsOptions | undefined,
+    Product[]
+  >
+  addProductQuery: QueryResult<AddProductOptions, Product>
 }
 
-export const QueryContext = createContext<QueryState>({} as QueryState)
+export const QueryContext = createContext<QueryContextValue>(
+  {} as QueryContextValue,
+)
 
 type Props = {
   children?: ReactNode
 }
 
 export const QueryContextProvider = ({ children }: Props) => {
-  const [state, dispatch] = useReducer(queryReducer, defaultQueryReducerState)
+  const getShopProductsQuery = useQuery({
+    fn: getProducts,
+  })
+  const getConsoleProductsQuery = useQuery({ fn: getProducts })
+  const addProductQuery = useQuery({ fn: addProduct })
 
-  const queryState: QueryState = {
-    ...state,
-    getShopProducts: {
-      ...state.getShopProducts,
-      fetch: async (props) => {
-        const { options, onSuccess, onError } = props || {}
-        try {
-          dispatch({ type: 'getShopProducts.init' })
-          const data = await getProducts(options)
-          dispatch({
-            type: 'getShopProducts.success',
-            payload: data,
-          })
-          onSuccess?.(data)
-        } catch (error) {
-          const { message } = error as Error
-          dispatch({
-            type: 'getShopProducts.error',
-            payload: message,
-          })
-          onError?.(message)
-        }
-      },
-    },
-    getConsoleProducts: {
-      ...state.getConsoleProducts,
-      fetch: async (props) => {
-        const { options, onSuccess, onError } = props || {}
-        try {
-          dispatch({ type: 'getConsoleProducts.init' })
-          const data = await getProducts(options)
-          dispatch({
-            type: 'getConsoleProducts.success',
-            payload: data,
-          })
-          onSuccess?.(data)
-        } catch (error) {
-          const { message } = error as Error
-          dispatch({
-            type: 'getConsoleProducts.error',
-            payload: message,
-          })
-          onError?.(message)
-        }
-      },
-    },
+  const value = {
+    getShopProductsQuery,
+    getConsoleProductsQuery,
+    addProductQuery,
   }
 
-  return (
-    <QueryContext.Provider value={queryState}>{children}</QueryContext.Provider>
-  )
+  return <QueryContext.Provider value={value}>{children}</QueryContext.Provider>
 }

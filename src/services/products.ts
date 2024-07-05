@@ -1,4 +1,4 @@
-import { Query, jsonApi } from './jsonApi'
+import { jsonApi } from './jsonApi'
 
 const PATH = '/products'
 
@@ -45,11 +45,41 @@ export type Product = {
   stockQuantity: number
 }
 
-export type GetAllProductsOptions = {
-  query?: Query & Partial<Product>
+export type GetProductsOptions = {
+  query?: { name_like?: string } & Partial<Product>
 }
 
-export const getProducts = (options?: GetAllProductsOptions) => {
+export const getProducts = (options?: GetProductsOptions) => {
   const { query } = options || {}
+
   return jsonApi<Product[]>({ endpoint: PATH, query })
+}
+
+export type AddProductOptions = {
+  payload: {
+    name: string
+    description?: string
+    image: string
+    price: number
+    stockQuantity: number
+    category: string
+    color: string
+    features?: string[]
+    availability: boolean
+  }
+}
+
+export const addProduct = (options: AddProductOptions) => {
+  const { payload } = options
+
+  return jsonApi<Product>({
+    endpoint: PATH,
+    init: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify(payload),
+    },
+  })
 }

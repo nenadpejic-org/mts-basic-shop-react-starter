@@ -1,18 +1,16 @@
-import { useQuery } from '@/hooks/useQuery'
+import { useQueryContext } from '@/hooks/useQueryContext'
 import { ChangeEvent, useEffect, useState } from 'react'
 import { ProductsList } from '../ProductsList'
 import Heading from '../ui/Heading'
 import TextInput from '../ui/TextInput'
 
 const ShopPage = () => {
-  const { getShopProducts } = useQuery()
+  const { getShopProductsQuery } = useQueryContext()
   const [searchedProduct, setSearchedProduct] = useState('')
 
   useEffect(() => {
-    getShopProducts.fetch({
-      options: {
-        query: { availability: true, name_like: searchedProduct },
-      },
+    getShopProductsQuery.fetch({
+      query: { availability: true, name_like: searchedProduct },
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchedProduct])
@@ -35,9 +33,9 @@ const ShopPage = () => {
 
         <ProductsList
           className="mt-8"
-          products={getShopProducts.data}
-          error={getShopProducts.error}
-          isLoading={getShopProducts.isLoading}
+          products={getShopProductsQuery.data}
+          error={getShopProductsQuery.error}
+          isLoading={getShopProductsQuery.isLoading}
         />
       </div>
     </section>
