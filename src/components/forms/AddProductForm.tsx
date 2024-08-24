@@ -1,7 +1,13 @@
 import { useQueryContext } from '@/hooks/useQueryContext'
-import { productCategories, productColors } from '@/services/products'
+import {
+  AddProductOptions,
+  productCategories,
+  productColors,
+} from '@/services/products'
 import { getInputOptions } from '@/utils/arrays'
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
+import { boolean, number, object, string } from 'yup'
 import Button from '../ui/Button'
 import Checkbox from '../ui/Checkbox'
 import NumberInput from '../ui/NumberInput'
@@ -10,10 +16,21 @@ import Select from '../ui/Select'
 import TextArea from '../ui/TextArea'
 import TextInput from '../ui/TextInput'
 
+const schema = object({
+  availability: boolean().required(),
+  category: string().required(),
+  color: string().required(),
+  description: string(),
+  image: string().required(),
+  name: string().required(),
+  price: number().min(1).required(),
+  stockQuantity: number().min(1).required(),
+})
+
 const categoryOptions = getInputOptions(productCategories)
 const colorOptions = getInputOptions(productColors)
 
-const defaultFormValues = {
+const defaultValues = {
   availability: false,
   category: '',
   color: '',
@@ -24,18 +41,30 @@ const defaultFormValues = {
   stockQuantity: 0,
 }
 
-const AddProductForm = () => {
-  const [formValues, setFormValues] = useState(defaultFormValues)
-  const { addProductQuery } = useQueryContext()
+type FormValues = AddProductOptions['payload']
 
-  const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+const AddProductForm = () => {
+  const { addProductQuery, getConsoleProductsQuery } = useQueryContext()
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: yupResolver(schema),
+    defaultValues,
+  })
+
+  const onValid = (formValues: FormValues) => {
     addProductQuery.fetch(
       { payload: formValues },
       {
-        onSuccess: () => {
-          handleClearForm()
-          console.log('Successfully added product')
+        onSuccess: (addedProduct) => {
+          getConsoleProductsQuery.update((products) =>
+            products ? [...products, addedProduct] : [addedProduct],
+          )
+          reset(defaultValues)
+          console.log(`Successfully added product ${addedProduct.name}`)
         },
         onError: () => {
           console.log('Failed to add product')
@@ -44,45 +73,34 @@ const AddProductForm = () => {
     )
   }
 
-  const handleClearForm = () => {
-    setFormValues(defaultFormValues)
-  }
-
-  const handleChangeForm = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-  ) => {
-    const { name, value, type } = e.target
-    setFormValues((pV) => ({
-      ...pV,
-      [name]:
-        type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
-    }))
+  const handleClear = () => {
+    reset(defaultValues)
   }
 
   return (
-    <form className="p-4" onSubmit={handleSubmitForm}>
+    <form className="p-4" onSubmit={handleSubmit(onValid)}>
       <div className="flex flex-col gap-2">
         <TextInput
           label="Name"
           placeholder="Product name"
           required
-          name="name"
-          onChange={handleChangeForm}
+          {...register('name')}
+          error={errors.name?.message}
           disabled={addProductQuery.isLoading}
         />
         <TextArea
           label="Description"
           placeholder="Product description"
-          name="description"
-          onChange={handleChangeForm}
+          {...register('description')}
+          error={errors.description?.message}
           disabled={addProductQuery.isLoading}
         />
         <TextInput
           label="Image url"
           placeholder="https://example.com"
           required
-          name="image"
-          onChange={handleChangeForm}
+          {...register('image')}
+          error={errors.image?.message}
           disabled={addProductQuery.isLoading}
         />
         <div className="gap-4 lg:flex">
@@ -92,8 +110,8 @@ const AddProductForm = () => {
             placeholder="1234"
             iconBefore="attachMoney"
             required
-            name="price"
-            onChange={handleChangeForm}
+            {...register('price', { valueAsNumber: true })}
+            error={errors.price?.message}
             disabled={addProductQuery.isLoading}
           />
           <NumberInput
@@ -101,8 +119,8 @@ const AddProductForm = () => {
             label="Stock Quantity"
             placeholder="1234"
             required
-            name="stockQuantity"
-            onChange={handleChangeForm}
+            {...register('stockQuantity', { valueAsNumber: true })}
+            error={errors.stockQuantity?.message}
             disabled={addProductQuery.isLoading}
           />
         </div>
@@ -110,22 +128,22 @@ const AddProductForm = () => {
           label="Category"
           options={categoryOptions}
           required
-          name="category"
-          onChange={handleChangeForm}
+          {...register('category')}
+          error={errors.category?.message}
           disabled={addProductQuery.isLoading}
         />
         <Select
           label="Color"
           options={colorOptions}
           required
-          name="color"
-          onChange={handleChangeForm}
+          {...register('color')}
+          error={errors.color?.message}
           disabled={addProductQuery.isLoading}
         />
         <Checkbox
           label="Is Available"
-          name="availability"
-          onChange={handleChangeForm}
+          {...register('availability')}
+          error={errors.availability?.message}
           disabled={addProductQuery.isLoading}
         />
       </div>
@@ -137,7 +155,7 @@ const AddProductForm = () => {
         <Button
           variant="ghost"
           type="button"
-          onClick={handleClearForm}
+          onClick={handleClear}
           disabled={addProductQuery.isLoading}
         >
           Clear

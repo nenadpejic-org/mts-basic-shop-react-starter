@@ -60,10 +60,7 @@ const Dialog = ({
             {/* Content */}
             <div
               onClick={(e) => e.stopPropagation()}
-              className={twMerge(
-                'pointer-events-auto bg-white lg:m-4',
-                contentClassName,
-              )}
+              className={twMerge('bg-white lg:m-4', contentClassName)}
             >
               {/* Header */}
               <div className="flex items-center justify-between gap-2 p-4 text-center lg:text-start">

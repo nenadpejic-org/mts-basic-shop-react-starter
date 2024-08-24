@@ -1,10 +1,4 @@
-import {
-  ComponentProps,
-  ForwardedRef,
-  forwardRef,
-  useId,
-  useState,
-} from 'react'
+import { ComponentProps, ForwardedRef, forwardRef, useId } from 'react'
 import { twMerge } from 'tailwind-merge'
 import BasicError from './BasicError'
 import Icon from './Icon'
@@ -18,19 +12,9 @@ type CheckboxProps = ComponentProps<'input'> & {
 
 const Checkbox = forwardRef(
   (
-    {
-      className,
-      defaultChecked,
-      error,
-      label,
-      onChange,
-      required,
-      value,
-      ...rest
-    }: CheckboxProps,
+    { className, error, label, required, ...rest }: CheckboxProps,
     ref: ForwardedRef<HTMLInputElement>,
   ) => {
-    const [isChecked, setIsChecked] = useState<boolean>(!!defaultChecked)
     const id = useId()
 
     return (
@@ -44,22 +28,17 @@ const Checkbox = forwardRef(
         >
           <input
             id={id}
-            className="hidden"
+            className="peer hidden"
             ref={ref}
             type="checkbox"
-            checked={value || isChecked}
-            onChange={(e) => {
-              onChange?.(e) || setIsChecked(e.target.checked)
-            }}
             {...rest}
           />
           <Icon
             className={twMerge(
-              'fill-blue-500',
+              'fill-blue-500 peer-disabled:fill-gray-400 [&_:last-child]:fill-transparent peer-checked:[&_:last-child]:fill-blue-500 peer-disabled:peer-checked:[&_:last-child]:fill-gray-400',
               error && 'fill-red-500',
-              rest.disabled && 'fill-gray-400',
             )}
-            icon={value || isChecked ? 'checkBox' : 'checkBoxOutlineBlank'}
+            icon="checkBox"
           />
 
           {label && <span className="ml-2 text-gray-900">{label}</span>}

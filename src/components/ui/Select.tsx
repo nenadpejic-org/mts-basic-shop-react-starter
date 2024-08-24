@@ -1,10 +1,4 @@
-import {
-  ComponentProps,
-  ForwardedRef,
-  forwardRef,
-  useId,
-  useState,
-} from 'react'
+import { ComponentProps, ForwardedRef, forwardRef, useId } from 'react'
 import { twMerge } from 'tailwind-merge'
 import BasicError from './BasicError'
 import BasicLabel from './BasicLabel'
@@ -20,11 +14,10 @@ type SelectProps = ComponentProps<'select'> & {
 
 const Select = forwardRef(
   (
-    { error, label, onChange, options, required, value, ...rest }: SelectProps,
+    { error, label, options, required, ...rest }: SelectProps,
     ref: ForwardedRef<HTMLSelectElement>,
   ) => {
     const id = useId()
-    const [selectedValue, setSelectedValue] = useState('')
 
     return (
       <div>
@@ -40,14 +33,9 @@ const Select = forwardRef(
               id={id}
               className={twMerge(
                 'w-full appearance-none border border-gray-400 bg-gray-50 px-4 py-2 pr-10 text-gray-900 placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50',
-                !value && !selectedValue && 'text-transparent',
-                error && 'border-red-500',
+                error && 'border-red-500 outline-red-500',
               )}
               ref={ref}
-              onChange={(e) => {
-                onChange?.(e) || setSelectedValue(e.target.value)
-              }}
-              value={value || selectedValue}
               {...rest}
             >
               <option value={''} className="italic text-gray-500">

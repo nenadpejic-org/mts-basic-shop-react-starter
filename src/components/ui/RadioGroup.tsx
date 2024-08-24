@@ -1,11 +1,4 @@
-import {
-  ChangeEvent,
-  ComponentProps,
-  ForwardedRef,
-  forwardRef,
-  useId,
-  useState,
-} from 'react'
+import { ComponentProps, ForwardedRef, forwardRef, useId } from 'react'
 import { twMerge } from 'tailwind-merge'
 import BasicError from './BasicError'
 import BasicLabel from './BasicLabel'
@@ -21,22 +14,13 @@ type RadioGroupProps = ComponentProps<'input'> & {
 
 const RadioGroup = forwardRef(
   (
-    {
-      error,
-      label,
-      onChange,
-      options,
-      required,
-      value,
-      ...rest
-    }: RadioGroupProps,
-    ref: ForwardedRef<HTMLDivElement>,
+    { error, label, options, required, ...rest }: RadioGroupProps,
+    ref: ForwardedRef<HTMLInputElement>,
   ) => {
     const id = useId()
-    const [checkedValue, setCheckedValue] = useState('')
 
     return (
-      <div ref={ref}>
+      <div>
         {label && <BasicLabel required={required}>{label}</BasicLabel>}
 
         <div>
@@ -52,27 +36,18 @@ const RadioGroup = forwardRef(
               >
                 <input
                   id={`${i}-${id}`}
-                  className="hidden"
+                  className="peer hidden"
                   type="radio"
                   value={option.value}
-                  checked={(value || checkedValue) === option.value}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                    const { value } = e.target
-                    onChange?.(e) || setCheckedValue(value)
-                  }}
+                  ref={ref}
                   {...rest}
                 />
                 <Icon
                   className={twMerge(
-                    'fill-blue-500',
+                    'fill-blue-500 peer-disabled:fill-gray-400 [&_:last-child]:fill-transparent peer-checked:[&_:last-child]:fill-blue-500 peer-disabled:peer-checked:[&_:last-child]:fill-gray-400',
                     error && 'fill-red-500',
-                    rest.disabled && 'fill-gray-400',
                   )}
-                  icon={
-                    (value || checkedValue) === option.value
-                      ? 'radioButtonChecked'
-                      : 'radioButtonUnchecked'
-                  }
+                  icon={'radioButton'}
                 />
                 <span className="ml-2 text-gray-900">{option.label}</span>
               </label>
