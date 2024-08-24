@@ -57,15 +57,14 @@ export const getProducts = (options?: GetProductsOptions) => {
 
 export type AddProductOptions = {
   payload: {
-    name: string
-    description?: string
-    image: string
-    price: number
-    stockQuantity: number
+    availability: boolean
     category: string
     color: string
-    features?: string[]
-    availability: boolean
+    description?: string
+    image: string
+    name: string
+    price: number
+    stockQuantity: number
   }
 }
 

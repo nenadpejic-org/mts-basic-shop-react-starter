@@ -29,7 +29,7 @@ const BasicInput = forwardRef(
               'w-full border border-gray-400 bg-gray-50 px-4 py-2 text-gray-900 placeholder:text-gray-400 disabled:cursor-not-allowed disabled:opacity-50',
               iconAfter && 'pr-10',
               iconBefore && 'pl-10',
-              error && 'border-red-500',
+              error && 'border-red-500 outline-red-500',
               className,
             )}
             ref={ref}
