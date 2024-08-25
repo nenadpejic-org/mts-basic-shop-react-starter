@@ -13,7 +13,7 @@ import Table, { TableConfig } from '../ui/Table'
 import TextInput from '../ui/TextInput'
 
 const ConsolePage = () => {
-  const { getConsoleProductsQuery } = useQueryContext()
+  const { getConsoleProductsQuery, deleteProductQuery } = useQueryContext()
   const { isMobile } = useScreen()
   const [searchedProduct, setSearchedProduct] = useState('')
   const [productToEdit, setProductToEdit] = useState<Product | null>(null)
@@ -47,20 +47,19 @@ const ConsolePage = () => {
               {
                 label: 'Edit',
                 onClick: () => {
-                  setProductToEdit(data)
+                  handleEditProduct(data)
                 },
               },
               {
                 label: 'Delete',
-                onClick: () => {
-                  // TODO: Implement handleDeleteProduct
-                },
+                onClick: () => handleDeleteProduct(data),
               },
             ]}
           />
         ),
       },
     ],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   )
 
@@ -80,6 +79,26 @@ const ConsolePage = () => {
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchedProduct(e.target.value)
   }
+
+  const handleEditProduct = (data: Product) => {
+    setProductToEdit(data)
+  }
+
+  const handleDeleteProduct = (data: Product) =>
+    deleteProductQuery.fetch(
+      { id: data.id },
+      {
+        onSuccess: () => {
+          getConsoleProductsQuery.update(
+            (products) => products?.filter((m) => m.id !== data.id) || products,
+          )
+          console.log(`Successfully deleted product ${data.name}`)
+        },
+        onError: () => {
+          console.log('Failed to delete product')
+        },
+      },
+    )
 
   return (
     <>
