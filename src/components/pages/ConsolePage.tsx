@@ -13,7 +13,8 @@ import Table, { TableConfig } from '../ui/Table'
 import TextInput from '../ui/TextInput'
 
 const ConsolePage = () => {
-  const { getConsoleProductsQuery, deleteProductQuery } = useQueryContext()
+  const { getConsoleProductsQuery, deleteProductQuery, patchProductQuery } =
+    useQueryContext()
   const { isMobile } = useScreen()
   const [searchedProduct, setSearchedProduct] = useState('')
   const [productToEdit, setProductToEdit] = useState<Product | null>(null)
@@ -31,8 +32,9 @@ const ConsolePage = () => {
         component: ({ data }) => (
           <Checkbox
             defaultChecked={data.availability}
-            onChange={() => {
-              // TODO: Implement handlePatchProduct
+            onChange={(e) => {
+              const { checked } = e.target
+              handlePatchProduct({ ...data, availability: checked })
             }}
           />
         ),
@@ -90,12 +92,29 @@ const ConsolePage = () => {
       {
         onSuccess: () => {
           getConsoleProductsQuery.update(
-            (products) => products?.filter((m) => m.id !== data.id) || products,
+            (products) => products?.filter((p) => p.id !== data.id) || products,
           )
           console.log(`Successfully deleted product ${data.name}`)
         },
         onError: () => {
           console.log('Failed to delete product')
+        },
+      },
+    )
+
+  const handlePatchProduct = (data: Product) =>
+    patchProductQuery.fetch(
+      { id: data.id, payload: { availability: data.availability } },
+      {
+        onSuccess: () => {
+          getConsoleProductsQuery.update(
+            (products) =>
+              products?.map((p) => (p.id === data.id ? data : p)) || products,
+          )
+          console.log(`Successfully patched product ${data.name}`)
+        },
+        onError: () => {
+          console.log('Failed to patch product')
         },
       },
     )
