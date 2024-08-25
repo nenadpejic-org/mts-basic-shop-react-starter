@@ -22,7 +22,7 @@ const Checkbox = forwardRef(
         <label
           className={twMerge(
             'inline-flex cursor-pointer items-center',
-            rest.disabled && 'cursor-default',
+            rest.disabled && 'cursor-not-allowed',
           )}
           htmlFor={id}
         >

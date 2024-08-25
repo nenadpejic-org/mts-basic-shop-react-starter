@@ -30,7 +30,7 @@ const RadioGroup = forwardRef(
                 key={option.value}
                 className={twMerge(
                   'flex w-fit cursor-pointer items-center text-gray-900',
-                  rest.disabled && 'cursor-default',
+                  rest.disabled && 'cursor-not-allowed',
                 )}
                 htmlFor={`${i}-${id}`}
               >

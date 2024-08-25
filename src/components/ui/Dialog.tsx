@@ -5,30 +5,39 @@ import Button from './Button'
 import Icon from './Icon'
 
 type Props = {
-  trigger: ReactNode
   children?: ReactNode
   className?: string
   contentClassName?: string
   footer?: ReactNode
   header?: ReactNode
+  onClose?: () => void
+  open?: boolean
+  trigger?: ReactNode
   triggerClassName?: string
 }
 
 const Dialog = ({
-  trigger,
   children,
   contentClassName,
-  header,
   footer,
+  header,
+  onClose,
+  open: isOpen = false,
+  trigger,
   triggerClassName,
 }: Props) => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(isOpen)
+
+  useEffect(() => {
+    setOpen(isOpen)
+  }, [isOpen])
 
   const handleOpen = () => {
     setOpen(true)
   }
 
   const handleClose = () => {
+    onClose?.()
     setOpen(false)
   }
 
@@ -46,20 +55,22 @@ const Dialog = ({
   return (
     <>
       {/* Trigger */}
-      <div className={triggerClassName} onClick={handleOpen}>
-        {trigger}
-      </div>
+      {trigger && (
+        <div className={triggerClassName} onClick={handleOpen}>
+          {trigger}
+        </div>
+      )}
 
       {open &&
         createPortal(
           // Overlay
           <div
             className="pointer-events-auto fixed inset-0 z-10 grid place-items-center overflow-y-auto bg-black/80"
-            onClick={handleClose}
+            onMouseDown={handleClose}
           >
             {/* Content */}
             <div
-              onClick={(e) => e.stopPropagation()}
+              onMouseDown={(e) => e.stopPropagation()}
               className={twMerge('bg-white lg:m-4', contentClassName)}
             >
               {/* Header */}
