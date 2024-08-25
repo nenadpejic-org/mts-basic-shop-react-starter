@@ -120,3 +120,23 @@ export const deleteProduct = (options: DeleteProductOptions) => {
     },
   })
 }
+
+export type PatchProductOptions = {
+  id: string
+  payload: Partial<AddProductOptions['payload']>
+}
+
+export const patchProduct = (options: PatchProductOptions) => {
+  const { id, payload } = options
+
+  return jsonApi<Product>({
+    endpoint: `${PATH}/${id}`,
+    init: {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify(payload),
+    },
+  })
+}
