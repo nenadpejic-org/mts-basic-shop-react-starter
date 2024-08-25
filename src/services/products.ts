@@ -102,3 +102,21 @@ export const editProduct = (options: EditProductOptions) => {
     },
   })
 }
+
+export type DeleteProductOptions = {
+  id: string
+}
+
+export const deleteProduct = (options: DeleteProductOptions) => {
+  const { id } = options
+
+  return jsonApi<Record<string, never>>({
+    endpoint: `${PATH}/${id}`,
+    init: {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    },
+  })
+}

@@ -26,6 +26,9 @@ Here is a rough wireframe of the projects design
 - [React Router](https://reactrouter.com/en/main/) - Routing
 - [JSON server](https://github.com/typicode/json-server) - Server and Database
 - [Concurrently](https://github.com/open-cli-tools/concurrently) - Run multiple commands concurrently
+- [React Hook Form](https://react-hook-form.com/) - Form handling
+- [Yup](https://github.com/jquense/yup) - Form validation
+- [Hookform Resolvers](https://react-hook-form.com/) - Form resolvers
 
 ## Installation
 

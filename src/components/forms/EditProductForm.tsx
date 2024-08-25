@@ -65,12 +65,11 @@ const EditProductForm = ({ productToEdit }: EditProductFormProps) => {
       { id: productToEdit.id, payload: formValues },
       {
         onSuccess: (editedProduct) => {
-          getConsoleProductsQuery.update((products) =>
-            products
-              ? products.map((p) =>
-                  p.id === productToEdit.id ? editedProduct : p,
-                )
-              : products,
+          getConsoleProductsQuery.update(
+            (products) =>
+              products?.map((p) =>
+                p.id === productToEdit.id ? editedProduct : p,
+              ) || products,
           )
           reset(defaultValues)
           console.log(`Successfully edited product ${editedProduct.name}`)
