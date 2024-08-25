@@ -2,12 +2,12 @@ import { jsonApi } from './jsonApi'
 
 const PATH = '/products'
 
-type ProductCategory = 'Bindings' | 'Boots' | 'Jackets' | 'Pants' | 'Snowboard'
+type ProductCategory = 'Bindings' | 'Boots' | 'Jacket' | 'Pants' | 'Snowboard'
 
 export const productCategories: ProductCategory[] = [
   'Bindings',
   'Boots',
-  'Jackets',
+  'Jacket',
   'Pants',
   'Snowboard',
 ]
@@ -75,6 +75,26 @@ export const addProduct = (options: AddProductOptions) => {
     endpoint: PATH,
     init: {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify(payload),
+    },
+  })
+}
+
+export type EditProductOptions = {
+  id: string
+  payload: AddProductOptions['payload']
+}
+
+export const editProduct = (options: EditProductOptions) => {
+  const { id, payload } = options
+
+  return jsonApi<Product>({
+    endpoint: `${PATH}/${id}`,
+    init: {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
