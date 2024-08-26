@@ -5,15 +5,18 @@ import App from './App.tsx'
 import { CartContextProvider } from './contexts/CartContext.tsx'
 import { QueryContextProvider } from './contexts/QueryContext.tsx'
 import './index.css'
+import { ToastContextProvider } from './contexts/ToastContext.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <CartContextProvider>
-      <QueryContextProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </QueryContextProvider>
-    </CartContextProvider>
+    <ToastContextProvider>
+      <CartContextProvider>
+        <QueryContextProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </QueryContextProvider>
+      </CartContextProvider>
+    </ToastContextProvider>
   </React.StrictMode>,
 )

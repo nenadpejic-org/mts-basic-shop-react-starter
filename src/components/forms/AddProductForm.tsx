@@ -1,4 +1,5 @@
 import { useQueryContext } from '@/hooks/useQueryContext'
+import { useToastContext } from '@/hooks/useToastContext'
 import {
   AddProductOptions,
   productCategories,
@@ -54,6 +55,7 @@ const AddProductForm = () => {
     resolver: yupResolver(schema),
     defaultValues,
   })
+  const { toast } = useToastContext()
 
   const onValid = (formValues: FormValues) => {
     addProductQuery.fetch(
@@ -64,10 +66,10 @@ const AddProductForm = () => {
             products ? [...products, addedProduct] : [addedProduct],
           )
           reset(defaultValues)
-          console.log(`Successfully added product ${addedProduct.name}`)
+          toast(`Successfully added product "${formValues.name}"`, 'success')
         },
         onError: () => {
-          console.log('Failed to add product')
+          toast(`Failed to add product "${formValues.name}"`, 'error')
         },
       },
     )

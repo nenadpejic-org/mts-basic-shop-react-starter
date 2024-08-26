@@ -1,8 +1,8 @@
-import { useCart } from '@/hooks/useCart'
+import { useCartContext } from '@/hooks/useCartContext'
 import CartItem from './CartItem'
 
 const CartList = () => {
-  const { cartItems } = useCart()
+  const { cartItems } = useCartContext()
 
   return (
     !!cartItems.length && (

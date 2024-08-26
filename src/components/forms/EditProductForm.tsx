@@ -1,7 +1,8 @@
 import { useQueryContext } from '@/hooks/useQueryContext'
+import { useToastContext } from '@/hooks/useToastContext'
 import {
-  Product,
   EditProductOptions,
+  Product,
   productCategories,
   productColors,
 } from '@/services/products'
@@ -59,6 +60,7 @@ const EditProductForm = ({ productToEdit }: EditProductFormProps) => {
     resolver: yupResolver(schema),
     defaultValues: productToEdit,
   })
+  const { toast } = useToastContext()
 
   const onValid = (formValues: FormValues) => {
     editProductQuery.fetch(
@@ -72,10 +74,10 @@ const EditProductForm = ({ productToEdit }: EditProductFormProps) => {
               ) || products,
           )
           reset(defaultValues)
-          console.log(`Successfully edited product ${editedProduct.name}`)
+          toast(`Successfully edited product "${formValues.name}"`, 'success')
         },
         onError: () => {
-          console.log('Failed to edit product')
+          toast(`Failed to edit product "${formValues.name}"`, 'error')
         },
       },
     )

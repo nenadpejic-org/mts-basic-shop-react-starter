@@ -1,5 +1,5 @@
 import { type CartItem } from '@/contexts/CartContext'
-import { useCart } from '@/hooks/useCart'
+import { useCartContext } from '@/hooks/useCartContext'
 import Paragraph from '../ui/Paragraph'
 import Button from '../ui/Button'
 
@@ -13,7 +13,7 @@ const CartItem = ({ cartItem }: Props) => {
     handleAddItemToCart,
     handleDeleteItemFromCart,
     handleRemoveItemFromCart,
-  } = useCart()
+  } = useCartContext()
 
   return (
     <li className="flex gap-4">
