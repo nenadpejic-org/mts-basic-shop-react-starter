@@ -1,4 +1,4 @@
-import { useCart } from '@/hooks/useCart'
+import { useCartContext } from '@/hooks/useCartContext'
 import Drawer from '../ui/Drawer'
 import Icon from '../ui/Icon'
 import Heading from '../ui/Heading'
@@ -12,7 +12,7 @@ type Props = {
 }
 
 const Cart = ({ className }: Props) => {
-  const { cartCount, cartTotal } = useCart()
+  const { cartCount, cartTotal } = useCartContext()
   const { isMobile } = useScreen()
 
   return (

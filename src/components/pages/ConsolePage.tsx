@@ -1,5 +1,6 @@
 import { useQueryContext } from '@/hooks/useQueryContext'
 import useScreen from '@/hooks/useScreen'
+import { useToastContext } from '@/hooks/useToastContext'
 import { Product } from '@/services/products'
 import { ChangeEvent, useEffect, useMemo, useState } from 'react'
 import AddProductForm from '../forms/AddProductForm'
@@ -18,6 +19,7 @@ const ConsolePage = () => {
   const { isMobile } = useScreen()
   const [searchedProduct, setSearchedProduct] = useState('')
   const [productToEdit, setProductToEdit] = useState<Product | null>(null)
+  const { toast } = useToastContext()
 
   const tableConfigDesktop: TableConfig<Product> = useMemo(
     () => [
@@ -94,10 +96,10 @@ const ConsolePage = () => {
           getConsoleProductsQuery.update(
             (products) => products?.filter((p) => p.id !== data.id) || products,
           )
-          console.log(`Successfully deleted product ${data.name}`)
+          toast(`Successfully deleted product "${data.name}"`, 'success')
         },
         onError: () => {
-          console.log('Failed to delete product')
+          toast(`Failed to delete product "${data.name}"`, 'error')
         },
       },
     )
@@ -111,10 +113,10 @@ const ConsolePage = () => {
             (products) =>
               products?.map((p) => (p.id === data.id ? data : p)) || products,
           )
-          console.log(`Successfully patched product ${data.name}`)
+          toast(`Successfully patched product "${data.name}"`, 'success')
         },
         onError: () => {
-          console.log('Failed to patch product')
+          toast(`Failed to patch product "${data.name}"`, 'error')
         },
       },
     )

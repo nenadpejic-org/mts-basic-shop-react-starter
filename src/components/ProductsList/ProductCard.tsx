@@ -1,13 +1,13 @@
 import Button from '@/components/ui/Button'
 import Paragraph from '@/components/ui/Paragraph'
-import { useCart } from '@/hooks/useCart'
+import { useCartContext } from '@/hooks/useCartContext'
 import { Product } from '@/services/products'
 
 type Props = { product: Product }
 
 const ProductCard = ({ product }: Props) => {
   const { image, name, price, stockQuantity } = product
-  const { handleAddItemToCart } = useCart()
+  const { handleAddItemToCart } = useCartContext()
 
   return (
     <li>
