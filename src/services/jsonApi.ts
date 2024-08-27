@@ -1,4 +1,6 @@
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = import.meta.env.PROD
+  ? import.meta.env.VITE_JSON_API_URL_PROD
+  : import.meta.env.VITE_JSON_API_URL_DEV
 
 type Query = Record<string, string | number | boolean>
 

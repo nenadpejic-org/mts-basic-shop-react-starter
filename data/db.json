@@ -5,261 +5,99 @@
       "name": "Snowboard Jacket Men Burgundy",
       "description": "Looking for the perfect blend of a riding hoodie and a fully-featured ski jacket? We get it. You want the specs and the capability to ride everything on the mountain, but without the bulk. And that’s why we designed the Blizzard. Packed with all the essential features and tech you need to carve pistes and rip pow, this highly waterproof, lightweight pullover ski jacket is the minimalist choice for riders looking to get the maximum out of their time on the mountain. And, equipped with our bombproof 4-way stretch outer shell, it is performance and comfort personified, and a true team and rider favourite, no matter the weather.",
       "price": 189,
-      "image": "https://source.unsplash.com/featured/?snowboard,jacket,men,burgundy",
+      "image": "/src/assets/images/snowboard-jacket-men-burgundy.jpg",
       "category": "Jacket",
       "color": "Burgundy",
       "availability": false,
-      "stockQuantity": 10,
-      "features": [
-        "Advanced Camber Profile",
-        "Customizable Binding Adjustments",
-        "Integrated Impact Protection",
-        "Quick-Lace System for Boots",
-        "Smartphone Connectivity for Wearables"
-      ]
+      "stockQuantity": 10
     },
     {
       "id": "2",
       "name": "Snowboard Boots Women Black",
       "description": "Conquer the slopes with confidence in our Black Snowboard Boots for women. Engineered for maximum comfort and performance, these boots provide exceptional support and traction. Whether you're carving through fresh powder or navigating challenging terrain, our boots ensure a comfortable and responsive ride. The sleek black design adds a touch of style to your winter adventures.",
       "price": 120,
-      "image": "https://source.unsplash.com/featured/?snowboard,boots,women,black",
+      "image": "/src/assets/images/snowboard-boots-women-black.jpg",
       "category": "Boots",
       "color": "Black",
       "availability": true,
-      "stockQuantity": 3,
-      "features": [
-        "Advanced Camber Profile",
-        "Integrated Impact Protection",
-        "Smartphone Connectivity for Wearables"
-      ]
+      "stockQuantity": 3
     },
     {
       "id": "3",
       "name": "Snowboard Pants Men Blue",
       "description": "Gear up for the ultimate snowboarding experience with our Blue Snowboard Pants for men. Designed to withstand the elements, these pants offer unbeatable waterproof protection and breathability. The versatile blue color adds a pop of style to your winter wardrobe. Whether you're hitting the slopes or exploring the backcountry, these pants are your go-to choice for comfort and performance.",
       "price": 150,
-      "image": "https://source.unsplash.com/featured/?snowboard,pants,men,blue",
+      "image": "/src/assets/images/snowboard-pants-men-blue.jpg",
       "category": "Pants",
       "color": "Blue",
       "availability": true,
-      "stockQuantity": 15,
-      "features": [
-        "Quick-Lace System for Boots",
-        "Smartphone Connectivity for Wearables"
-      ]
+      "stockQuantity": 15
     },
     {
       "id": "4",
       "name": "Snowboard Bindings Women Green",
       "description": "Elevate your snowboarding experience with our Green Snowboard Bindings for women. Engineered for precision and control, these bindings provide a secure fit and optimal power transfer. The vibrant green color adds a touch of energy to your gear. Whether you're a beginner or a seasoned rider, these bindings are designed to enhance your performance on the mountain.",
       "price": 90,
-      "image": "https://source.unsplash.com/featured/?snowboard,bindings,women,green",
+      "image": "/src/assets/images/snowboard-bindings-women-green.jpg",
       "category": "Bindings",
       "color": "Green",
       "availability": true,
-      "stockQuantity": 4,
-      "features": [
-        "Advanced Camber Profile",
-        "Customizable Binding Adjustments",
-        "Integrated Impact Protection"
-      ]
+      "stockQuantity": 4
     },
     {
       "id": "5",
       "name": "Snowboard Men Violet",
       "description": "Unleash your full potential on the snow with our Violet Snowboard for men. Engineered for speed and agility, this board delivers an exhilarating ride on any terrain. The striking violet design ensures you stand out on the slopes. Whether you're a freestyle enthusiast or a backcountry explorer, this snowboard is your key to unlocking winter adventures.",
       "price": 250,
-      "image": "https://source.unsplash.com/featured/?snowboard,men,violet",
+      "image": "/src/assets/images/snowboard-men-violet.jpg",
       "category": "Snowboard",
       "color": "Violet",
       "availability": true,
-      "stockQuantity": 2,
-      "features": [
-        "Advanced Camber Profile",
-        "Integrated Impact Protection",
-        "Smartphone Connectivity for Wearables"
-      ]
+      "stockQuantity": 2
     },
     {
       "id": "6",
       "name": "Snowboard Jacket Women Sand",
       "description": "Stay warm and stylish on the mountain with our Sand Snowboard Jacket for women. Designed for maximum comfort, this jacket provides excellent insulation and protection against the cold. The neutral sand color adds a touch of elegance to your winter wardrobe. Whether you're hitting the slopes or enjoying après-ski activities, this jacket is a must-have for winter enthusiasts.",
       "price": 200,
-      "image": "https://source.unsplash.com/featured/?snowboard,jacket,women,sand",
+      "image": "/src/assets/images/snowboard-jacket-women-sand.jpg",
       "category": "Jacket",
       "color": "Sand",
       "availability": true,
-      "stockQuantity": 18,
-      "features": [
-        "Quick-Lace System for Boots",
-        "Smartphone Connectivity for Wearables"
-      ]
+      "stockQuantity": 18
     },
     {
       "id": "7",
       "name": "Snowboard Boots Men Yellow",
       "description": "Step into the ultimate snowboarding experience with our Yellow Snowboard Boots for men. Engineered for durability and performance, these boots offer exceptional support and comfort. The vibrant yellow color adds a bold and energetic flair to your winter gear. Whether you're tackling challenging slopes or enjoying a casual ride, these boots are your go-to choice.",
       "price": 130,
-      "image": "https://source.unsplash.com/featured/?snowboard,boots,men,yellow",
+      "image": "/src/assets/images/snowboard-boots-men-yellow.jpg",
       "category": "Boots",
       "color": "Yellow",
       "availability": true,
-      "stockQuantity": 7,
-      "features": ["Advanced Camber Profile", "Integrated Impact Protection"]
+      "stockQuantity": 7
     },
     {
       "id": "8",
       "name": "Snowboard Pants Women White",
       "description": "Experience unmatched comfort and style with our White Snowboard Pants for women. Crafted for the modern snowboarder, these pants provide superior waterproofing and breathability. The crisp white color adds a touch of elegance to your winter look. Whether you're carving through powder or cruising the slopes, these pants are your essential companion for winter adventures.",
       "price": 180,
-      "image": "https://source.unsplash.com/featured/?snowboard,pants,women,white",
+      "image": "/src/assets/images/snowboard-pants-women-white.jpg",
       "category": "Pants",
       "color": "White",
       "availability": true,
-      "stockQuantity": 13,
-      "features": [
-        "Quick-Lace System for Boots",
-        "Smartphone Connectivity for Wearables"
-      ]
+      "stockQuantity": 13
     },
     {
       "id": "9",
       "name": "Snowboard Bindings Men Black",
       "description": "Dominate the mountain with our Black Snowboard Bindings for men. Engineered for precision and control, these bindings offer a responsive and secure fit. The sleek black design complements any snowboard setup. Whether you're a freestyle rider or a backcountry enthusiast, these bindings deliver the performance you need for an unforgettable snowboarding experience.",
       "price": 100,
-      "image": "https://source.unsplash.com/featured/?snowboard,bindings,men,black",
+      "image": "/src/assets/images/snowboard-bindings-men-black.jpg",
       "category": "Bindings",
       "color": "Black",
       "availability": true,
-      "stockQuantity": 9,
-      "features": [
-        "Customizable Binding Adjustments",
-        "Integrated Impact Protection",
-        "Quick-Lace System for Boots"
-      ]
-    },
-    {
-      "id": "10",
-      "name": "Snowboard Women Blue",
-      "description": "Conquer the slopes in style with our Blue Snowboard for women. Engineered for versatility, this board delivers a smooth and responsive ride on any terrain. The vibrant blue design adds a pop of color to your winter adventures. Whether you're a beginner or an experienced rider, this snowboard is designed to elevate your performance and enhance your snowboarding experience.",
-      "price": 230,
-      "image": "https://source.unsplash.com/featured/?snowboard,women,blue",
-      "category": "Snowboard",
-      "color": "Blue",
-      "availability": true,
-      "stockQuantity": 20,
-      "features": [
-        "Advanced Camber Profile",
-        "Integrated Impact Protection",
-        "Smartphone Connectivity for Wearables"
-      ]
-    },
-    {
-      "id": "11",
-      "name": "Snowboard Jacket Men Black",
-      "description": "Stay warm and stylish on the mountain with our Black Snowboard Jacket for men. Designed for maximum comfort, this jacket provides excellent insulation and protection against the cold. The classic black color adds a sleek and timeless touch to your winter wardrobe. Whether you're carving through powder or cruising the slopes, this jacket is a must-have for winter enthusiasts.",
-      "price": 210,
-      "image": "https://source.unsplash.com/featured/?snowboard,jacket,men,black",
-      "category": "Jacket",
-      "color": "Black",
-      "availability": true,
-      "stockQuantity": 14,
-      "features": [
-        "Customizable Binding Adjustments",
-        "Integrated Impact Protection",
-        "Quick-Lace System for Boots"
-      ]
-    },
-    {
-      "id": "12",
-      "name": "Snowboard Boots Women Violet",
-      "description": "Step into the ultimate snowboarding experience with our Violet Snowboard Boots for women. Engineered for durability and performance, these boots offer exceptional support and comfort. The striking violet color adds a bold and energetic flair to your winter gear. Whether you're tackling challenging slopes or enjoying a casual ride, these boots are your go-to choice.",
-      "price": 140,
-      "image": "https://source.unsplash.com/featured/?snowboard,boots,women,violet",
-      "category": "Boots",
-      "color": "Violet",
-      "availability": true,
-      "stockQuantity": 16,
-      "features": [
-        "Customizable Binding Adjustments",
-        "Integrated Impact Protection",
-        "Quick-Lace System for Boots"
-      ]
-    },
-    {
-      "id": "13",
-      "name": "Snowboard Pants Men Sand",
-      "description": "Gear up for the ultimate snowboarding experience with our Sand Snowboard Pants for men. Designed to withstand the elements, these pants offer unbeatable waterproof protection and breathability. The neutral sand color adds a touch of elegance to your winter wardrobe. Whether you're hitting the slopes or exploring the backcountry, these pants are your go-to choice for comfort and performance.",
-      "price": 160,
-      "image": "https://source.unsplash.com/featured/?snowboard,pants,men,sand",
-      "category": "Pants",
-      "color": "Sand",
-      "availability": true,
-      "stockQuantity": 6,
-      "features": [
-        "Customizable Binding Adjustments",
-        "Integrated Impact Protection"
-      ]
-    },
-    {
-      "id": "14",
-      "name": "Snowboard Bindings Women Yellow",
-      "description": "Dominate the mountain with our Yellow Snowboard Bindings for women. Engineered for precision and control, these bindings offer a responsive and secure fit. The vibrant yellow color adds a touch of energy to your snowboard setup. Whether you're a freestyle rider or a backcountry enthusiast, these bindings deliver the performance you need for an unforgettable snowboarding experience.",
-      "price": 110,
-      "image": "https://source.unsplash.com/featured/?snowboard,bindings,women,yellow",
-      "category": "Bindings",
-      "color": "Yellow",
-      "availability": true,
-      "stockQuantity": 3,
-      "features": [
-        "Advanced Camber Profile",
-        "Quick-Lace System for Boots",
-        "Smartphone Connectivity for Wearables"
-      ]
-    },
-    {
-      "id": "15",
-      "name": "Snowboard Men Green",
-      "description": "Unleash your full potential on the snow with our Green Snowboard for men. Engineered for speed and agility, this board delivers an exhilarating ride on any terrain. The vibrant green design ensures you stand out on the slopes. Whether you're a freestyle enthusiast or a backcountry explorer, this snowboard is your key to unlocking winter adventures.",
-      "price": 270,
-      "image": "https://source.unsplash.com/featured/?snowboard,men,green",
-      "category": "Snowboard",
-      "color": "Green",
-      "availability": true,
-      "stockQuantity": 17,
-      "features": [
-        "Advanced Camber Profile",
-        "Integrated Impact Protection",
-        "Quick-Lace System for Boots"
-      ]
-    },
-    {
-      "id": "16",
-      "name": "Snowboard Jacket Women Blue",
-      "description": "Stay warm and stylish on the mountain with our Blue Snowboard Jacket for women. Designed for maximum comfort, this jacket provides excellent insulation and protection against the cold. The vibrant blue color adds a pop of color to your winter wardrobe. Whether you're carving through powder or cruising the slopes, this jacket is a must-have for winter enthusiasts.",
-      "price": 220,
-      "image": "https://source.unsplash.com/featured/?snowboard,jacket,women,blue",
-      "category": "Jacket",
-      "color": "Blue",
-      "availability": true,
-      "stockQuantity": 11,
-      "features": [
-        "Quick-Lace System for Boots",
-        "Smartphone Connectivity for Wearables"
-      ]
-    },
-    {
-      "id": "17",
-      "name": "Snowboard Boots Men White",
-      "description": "Step into the ultimate snowboarding experience with our White Snowboard Boots for men. Engineered for durability and performance, these boots offer exceptional support and comfort. The crisp white color adds a clean and modern touch to your winter gear. Whether you're tackling challenging slopes or enjoying a casual ride, these boots are your go-to choice.",
-      "price": 120,
-      "image": "https://source.unsplash.com/featured/?snowboard,boots,men,white",
-      "category": "Boots",
-      "color": "White",
-      "availability": true,
-      "stockQuantity": 14,
-      "features": ["Smartphone Connectivity for Wearables"]
+      "stockQuantity": 9
     }
   ]
 }
