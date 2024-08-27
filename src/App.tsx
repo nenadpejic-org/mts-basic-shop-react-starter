@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
-import ConsolePage from './components/pages/ConsolePage'
-import HomePage from './components/pages/HomePage'
-import ShopPage from './components/pages/ShopPage'
+import ConsolePage from './pages/ConsolePage'
+import HomePage from './pages/HomePage'
+import ShopPage from './pages/ShopPage'
 
 function App() {
   return (
