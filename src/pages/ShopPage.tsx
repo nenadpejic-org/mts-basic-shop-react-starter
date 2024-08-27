@@ -1,8 +1,8 @@
 import { useQueryContext } from '@/hooks/useQueryContext'
 import { ChangeEvent, useEffect, useState } from 'react'
-import { ProductsList } from '../ProductsList'
-import Heading from '../ui/Heading'
-import TextInput from '../ui/TextInput'
+import { ProductsList } from '../components/ProductsList'
+import Heading from '../components/ui/Heading'
+import TextInput from '../components/ui/TextInput'
 
 const ShopPage = () => {
   const { getShopProductsQuery } = useQueryContext()
